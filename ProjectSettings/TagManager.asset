@@ -8,6 +8,10 @@ TagManager:
   - Sphere
   - BoxForSphere
   - ToxicBarrel
+  - Fire
+  - EndGame
+  - Wall
+  - Toxic
   layers:
   - Default
   - TransparentFX

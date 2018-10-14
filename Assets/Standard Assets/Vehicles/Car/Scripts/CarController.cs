@@ -82,7 +82,6 @@ namespace UnityStandardAssets.Vehicles.Car
 
         public Text speedText;
         public Text accelerationText;
-        public Text directionText;
         public Text movementDirectionText;
         public Text strenghtText;
         public Text drivenDistance;
@@ -100,6 +99,8 @@ namespace UnityStandardAssets.Vehicles.Car
 
         Vector3 lastPosition;
 
+        public bool canMove = true;
+
 
         void Update () {
             elapsedTime = Time.time - startTime;
@@ -115,7 +116,10 @@ namespace UnityStandardAssets.Vehicles.Car
 
             strenghtText.text = m_CurrentTorque.ToString();
 
-            distance += Vector3.Distance(transform.position, lastPosition) / 3;
+            if (canMove)
+            {
+
+                distance += Vector3.Distance(transform.position, lastPosition) / 3;
             lastPosition = transform.position;
 
             drivenDistance.text = Math.Round(distance, 2).ToString();
@@ -125,9 +129,10 @@ namespace UnityStandardAssets.Vehicles.Car
             if (batteryPerMinute == 0f) {
                 batteryPerMinute = 0.000000000001f;
             } 
-            currentBattery = 100 - (distance / batteryPerMeter) - (elapsedTime / batteryPerMinute);
 
-            battery.text = currentBattery >= 0 ? currentBattery.ToString() : 0.ToString();
+                currentBattery = 100 - (elapsedTime / batteryPerMinute / 30);
+                battery.text = currentBattery >= 0 ? currentBattery.ToString("F2") + "%" : "0%";
+            }
         }
 
 

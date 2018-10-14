@@ -11,7 +11,7 @@ public class VRController : MonoBehaviour {
 	// Collider collider2;
 
         //Fetch the Renderer from the GameObject
-    Renderer rend; 
+    LineRenderer rend; 
 
     private float hoverForce = 11f;
 
@@ -20,7 +20,7 @@ public class VRController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		rend = GetComponent<Renderer>();
+		rend = GetComponent<LineRenderer>();
 		rigidbody = GetComponent<Rigidbody>(); 
 		startTime = Time.time;
 	}
@@ -66,9 +66,9 @@ public class VRController : MonoBehaviour {
 	}
 
 	void OnTriggerStay(Collider other) {
-		Debug.Log("spherererere");
+		//Debug.Log("spherererere");
 		if (other.tag == "BoxForSphere") {
-			Debug.Log("spherererere");
+			//Debug.Log("spherererere");
 			// rigidbody.AddForce(Vector3.up * hoverForce, ForceMode.Acceleration);
 		}
 	}
